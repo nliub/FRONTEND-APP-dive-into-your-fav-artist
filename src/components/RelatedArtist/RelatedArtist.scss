@@ -7,6 +7,9 @@
 
   &__img {
     width: 15vw;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__items {
     display: flex;
