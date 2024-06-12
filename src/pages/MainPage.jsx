@@ -11,7 +11,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
-    "BQDsGaT6YCD1gAVgNdSxxc-a_85luUeIB_uaoMnoKHP1bFAU2VUxmgW81Ng7AMcvkmDDaUdP0_jJwhv1l6BggSWIqKTr1w1y2jk2A51wXQZLcfS9YUA";
+    "BQCBqiQ6J_IRb8kc4pK6yf8jlGLqUmnKG2QdfxnaVJ0umwRPEDJH-QmKWCgmVhsaIWpTK62OBdLlwT1AyhStqcHgUe-4a_fFMZsjaaVZfpeU3h8nclM";
   const { id: artistIDfromParams } = useParams();
   // const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
