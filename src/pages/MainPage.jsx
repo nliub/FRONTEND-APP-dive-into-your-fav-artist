@@ -7,7 +7,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
-    "BQCMZNja6XNGV7vqRsHycQTQgnYFRBTRXYhAp3ynS279sXDDqlidH1p5ed0172X5SULI25bfzjhfp7SY3T_tGzxQFCn8h9cOHXCHXpRpyFi6TK6jfyc";
+    "BQBHCqkStVtz9CIjSAvgZVWbrFbuW_M7E1jCsLrGrwg82Nhk-JuquuPr_U8d6xao4dirLtLGbdSO1RbpOWCn6ZByhTMcTpdsu5LL1TCQBhy_zLh_8m8";
   const { id: artistIDfromParams } = useParams();
   // const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
@@ -107,16 +107,7 @@ const MainPage = () => {
   if (!(artistData && albumData && topTracksData && relatedArtistsData)) {
     return <div>loading</div>;
   }
-  return (
-    <div>
-      <DumbComponent
-        artistData={artistData}
-        albumData={albumData}
-        topTracksData={topTracksData}
-        relatedArtistsData={relatedArtistsData}
-      />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default MainPage;
