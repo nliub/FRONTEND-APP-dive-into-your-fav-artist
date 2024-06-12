@@ -1,0 +1,19 @@
+.related-artist {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 2rem;
+
+  &__img {
+    width: 15vw;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+  }
+  &__list {
+    display: flex;
+    flex-direction: row;
+  }
+}

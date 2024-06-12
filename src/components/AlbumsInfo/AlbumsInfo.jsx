@@ -18,14 +18,15 @@ const AlbumsInfo = ({ albumData, topTracksData }) => {
             </li>
           ))}
         </ul>
-        <div className="album__song-container">
-          <ol className="albums__song-list">
-            {topTracksData.tracks.map((item) => (
-              <li key={item.id}> {item.name}</li>
-            ))}
-          </ol>
-        </div>
       </section>
+      <div className="album__song-container">
+        <h2>Top 10 Songs</h2>
+        <ol className="albums__song-list">
+          {topTracksData.tracks.map((item) => (
+            <li key={item.id}> {item.name}</li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 };

@@ -5,12 +5,13 @@ import ArtistInfo from "../components/ArtistInfo/ArtistInfo";
 import AlbumsInfo from "../components/AlbumsInfo/AlbumsInfo";
 import Header from "../components/Header/Header";
 import axios from "axios";
+import RelatedArtist from "../components/RelatedArtist/RelatedArtist";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
-    "BQBHCqkStVtz9CIjSAvgZVWbrFbuW_M7E1jCsLrGrwg82Nhk-JuquuPr_U8d6xao4dirLtLGbdSO1RbpOWCn6ZByhTMcTpdsu5LL1TCQBhy_zLh_8m8";
+    "BQDsGaT6YCD1gAVgNdSxxc-a_85luUeIB_uaoMnoKHP1bFAU2VUxmgW81Ng7AMcvkmDDaUdP0_jJwhv1l6BggSWIqKTr1w1y2jk2A51wXQZLcfS9YUA";
   const { id: artistIDfromParams } = useParams();
   // const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
@@ -89,7 +90,7 @@ const MainPage = () => {
         },
       });
       const linkedEndpointID = response.data.artists.items[0].id;
-      console.log(linkedEndpointID);
+      // console.log(linkedEndpointID);
       navigate(`/${linkedEndpointID}`);
     } catch (error) {
       console.log(error);
@@ -119,6 +120,7 @@ const MainPage = () => {
       <Header handleSearchInput={handleSearchInput} />
       <ArtistInfo artistData={artistData} />
       <AlbumsInfo albumData={albumData} topTracksData={topTracksData} />
+      <RelatedArtist relatedArtistsData={relatedArtistsData} />
     </div>
   );
 };
