@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import DumbComponent from "./DumbComponent";
 import ArtistInfo from "../components/ArtistInfo/ArtistInfo";
 import AlbumsInfo from "../components/AlbumsInfo/AlbumsInfo";
@@ -7,11 +7,12 @@ import Header from "../components/Header/Header";
 import axios from "axios";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
     "BQBHCqkStVtz9CIjSAvgZVWbrFbuW_M7E1jCsLrGrwg82Nhk-JuquuPr_U8d6xao4dirLtLGbdSO1RbpOWCn6ZByhTMcTpdsu5LL1TCQBhy_zLh_8m8";
   const { id: artistIDfromParams } = useParams();
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
   const [albumData, setAlbumData] = useState(null);
   const [topTracksData, setTopTracksData] = useState(null);
@@ -79,6 +80,30 @@ const MainPage = () => {
     }
   };
 
+  const getArtistIDFromName = async (artistName) => {
+    try {
+      const url = `${baseURL}search?q=${artistName}&type=artist`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      const linkedEndpointID = response.data.artists.items[0].id;
+      console.log(linkedEndpointID);
+      navigate(`/${linkedEndpointID}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSearchInput = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const searchInput = form.search.value;
+    getArtistIDFromName(searchInput);
+    form.reset();
+  };
+
   useEffect(() => {
     getArtistData();
     getAlbumData();
@@ -91,13 +116,7 @@ const MainPage = () => {
   }
   return (
     <div>
-      {/* <DumbComponent
-        artistData={artistData}
-        albumData={albumData}
-        topTracksData={topTracksData}
-        relatedArtistsData={relatedArtistsData}
-      /> */}
-      <Header />
+      <Header handleSearchInput={handleSearchInput} />
       <ArtistInfo artistData={artistData} />
       <AlbumsInfo albumData={albumData} topTracksData={topTracksData} />
     </div>
