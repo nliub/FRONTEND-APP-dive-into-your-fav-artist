@@ -15,12 +15,24 @@
     margin: 0;
   }
   &__items {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     flex: 0 0 auto;
     margin-right: 1rem;
   }
 
   &__img {
-    width: 10vw;
+    width: 15vw;
+    align-self: center;
   }
+  &__container {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 1rem;
+  }
+}
+
+.albums__song-list {
+  text-indent: 0.5rem;
 }
