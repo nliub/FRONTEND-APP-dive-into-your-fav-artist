@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DumbComponent from "./DumbComponent";
+import ArtistInfo from "../components/ArtistInfo/ArtistInfo";
+import AlbumsInfo from "../components/AlbumsInfo/AlbumsInfo";
+import Header from "../components/Header/Header";
 import axios from "axios";
 
 const MainPage = () => {
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
-    "BQDtrkPrenV_d96bLv4D736UJsL-R8iA6KK0e3LQXVLpfVVhz6M2h0OE8NSphCl4we4s4PfwJlVV7G5hnp7BGquyRoghlE7Uty7lGq2HnByZxL21524";
+    "BQBHCqkStVtz9CIjSAvgZVWbrFbuW_M7E1jCsLrGrwg82Nhk-JuquuPr_U8d6xao4dirLtLGbdSO1RbpOWCn6ZByhTMcTpdsu5LL1TCQBhy_zLh_8m8";
   const { id: artistIDfromParams } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
@@ -40,6 +43,7 @@ const MainPage = () => {
           Authorization: `Bearer ${access_token}`,
         },
       });
+      console.log(response.data);
       setAlbumData(response.data);
     } catch (error) {
       console.log(error);
@@ -87,12 +91,15 @@ const MainPage = () => {
   }
   return (
     <div>
-      <DumbComponent
+      {/* <DumbComponent
         artistData={artistData}
         albumData={albumData}
         topTracksData={topTracksData}
         relatedArtistsData={relatedArtistsData}
-      />
+      /> */}
+      <Header />
+      <ArtistInfo artistData={artistData} />
+      <AlbumsInfo albumData={albumData} topTracksData={topTracksData} />
     </div>
   );
 };

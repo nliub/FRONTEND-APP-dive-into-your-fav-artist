@@ -1,20 +1,32 @@
-const AlbumsInfo = () => {
+import "./AlbumsInfo.scss";
+
+const AlbumsInfo = ({ albumData, topTracksData }) => {
+  if (!albumData) return null;
   return (
-    <section className="albums">
+    <div>
       <h2 className="albums__header"> Albums</h2>
-      <ul className="albums__list">
-        {/* {api_call_name.map(() => (
-          <li key={insert_key} className="albums__items">
-            <img src="" alt="" className="albums__img" />
-            <div className="album__song-container">
-              <ul className="albums__song-list">
-                <li className="albums__song-items">{songs}</li>
-              </ul>
-            </div>
-          </li>
-        ))} */}
-      </ul>
-    </section>
+      <section className="albums">
+        <ul className="albums__list">
+          {albumData.items.map((item) => (
+            <li key={item.uri} className="albums__items">
+              <p>{item.name}</p>
+              <img
+                src={item.images[0].url}
+                alt="Cover Image of Album"
+                className="albums__img"
+              />
+            </li>
+          ))}
+        </ul>
+        <div className="album__song-container">
+          <ul className="albums__song-list">
+            {topTracksData.tracks.map((item) => (
+              <li key={item.id}> {item.name}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </div>
   );
 };
 
