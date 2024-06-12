@@ -21,11 +21,18 @@ const AlbumsInfo = ({ albumData, topTracksData }) => {
       </section>
       <div className="album__song-container">
         <h2>Top 10 Songs</h2>
-        <ol className="albums__song-list">
-          {topTracksData.tracks.map((item) => (
-            <li key={item.id}> {item.name}</li>
-          ))}
-        </ol>
+        <div className="albums__songs">
+          <ol className="albums__song-list">
+            {topTracksData.tracks.slice(0, 5).map((item) => (
+              <li key={item.id}> {item.name}</li>
+            ))}
+          </ol>
+          <ol start="6" className="albums__song-list">
+            {topTracksData.tracks.slice(5, 10).map((item) => (
+              <li key={item.id}> {item.name}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );

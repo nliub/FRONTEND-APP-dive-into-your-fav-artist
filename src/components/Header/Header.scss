@@ -5,11 +5,19 @@
   flex-direction: column;
 
   &__search {
-    width: 75%;
+    width: 25vw;
+    margin-right: 1rem;
+    height: 2rem;
   }
   &__button {
     background-color: #1db954;
     border-radius: 4px;
     border: 1px solid #1db954;
+    height: 2rem;
+    width: 25%;
+  }
+  &__form {
+    width: 40%;
+    padding-bottom: 2rem;
   }
 }

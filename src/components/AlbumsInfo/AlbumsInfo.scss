@@ -25,14 +25,29 @@
   &__img {
     width: 15vw;
     align-self: center;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__container {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     padding: 1rem;
+    color: white;
+    background-color: #1e1e1e;
+  }
+  &__songs {
+    padding: 0 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .albums__song-list {
   text-indent: 0.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }
