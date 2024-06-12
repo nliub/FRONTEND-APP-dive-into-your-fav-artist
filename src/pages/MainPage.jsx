@@ -69,7 +69,6 @@ const MainPage = () => {
           Authorization: `Bearer ${access_token}`,
         },
       });
-      console.log(response.data);
       setRelatedArtistsData(response.data);
     } catch (error) {
       console.log(error);
@@ -83,7 +82,7 @@ const MainPage = () => {
     getRelatedArtistsData();
   }, [artistID]);
 
-  if (!(artistData && albumData && topTracksData)) {
+  if (!(artistData && albumData && topTracksData && relatedArtistsData)) {
     return <div>loading</div>;
   }
   return (

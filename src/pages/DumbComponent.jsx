@@ -23,6 +23,7 @@ const DumbComponent = ({
       </h2>
       <hr />
       <h2>
+        <p>related artists</p>
         {relatedArtistsData.artists.map((item) => (
           <div key={item.id}> {item.name}</div>
         ))}
