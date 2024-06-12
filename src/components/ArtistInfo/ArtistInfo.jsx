@@ -1,8 +1,9 @@
 // import "./AristInfo.scss";
-import data from "../../data/example.json";
-const AristInfo = () => {
-  const { name, followers, genres, images, external_urls, popularity } = data;
-  const firstImage = images[0];
+const AristInfo = ({ artistData }) => {
+  if (!artistData) return null;
+  const { name, followers, genres, images, external_urls, popularity } =
+    artistData;
+  const firstImage = images[0].url;
   return (
     <>
       <div className="info">

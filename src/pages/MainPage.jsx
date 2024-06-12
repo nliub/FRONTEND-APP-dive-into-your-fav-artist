@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import DumbComponent from "./DumbComponent";
+import ArtistInfo from "../components/ArtistInfo/ArtistInfo";
+import AlbumsInfo from "../components/AlbumsInfo/AlbumsInfo";
+import Header from "../components/Header/Header";
 import axios from "axios";
 
 const MainPage = () => {
@@ -47,6 +50,7 @@ const MainPage = () => {
           Authorization: `Bearer ${access_token}`,
         },
       });
+      console.log(response.data);
       setAlbumData(response.data);
     } catch (error) {
       console.log(error);
@@ -107,7 +111,19 @@ const MainPage = () => {
   if (!(artistData && albumData && topTracksData && relatedArtistsData)) {
     return <div>loading</div>;
   }
-  return <div></div>;
+  return (
+    <div>
+      {/* <DumbComponent
+        artistData={artistData}
+        albumData={albumData}
+        topTracksData={topTracksData}
+        relatedArtistsData={relatedArtistsData}
+      /> */}
+      <Header />
+      <ArtistInfo artistData={artistData} />
+      <AlbumsInfo albumData={albumData} topTracksData={topTracksData} />
+    </div>
+  );
 };
 
 export default MainPage;
