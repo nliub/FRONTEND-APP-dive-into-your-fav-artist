@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import DumbComponent from "./DumbComponent";
 import axios from "axios";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const baseURL = "https://api.spotify.com/v1/";
   const access_token =
-    "BQDtrkPrenV_d96bLv4D736UJsL-R8iA6KK0e3LQXVLpfVVhz6M2h0OE8NSphCl4we4s4PfwJlVV7G5hnp7BGquyRoghlE7Uty7lGq2HnByZxL21524";
+    "BQCMZNja6XNGV7vqRsHycQTQgnYFRBTRXYhAp3ynS279sXDDqlidH1p5ed0172X5SULI25bfzjhfp7SY3T_tGzxQFCn8h9cOHXCHXpRpyFi6TK6jfyc";
   const { id: artistIDfromParams } = useParams();
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const [artistData, setArtistData] = useState(null);
   const [albumData, setAlbumData] = useState(null);
   const [topTracksData, setTopTracksData] = useState(null);
@@ -29,6 +30,12 @@ const MainPage = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSearchInput = (event) => {
+    // setSearchTerm(event.target.value);
+    const searchInput = event.target.value;
+    getArtistIDFromName(searchInput);
   };
 
   const getAlbumData = async () => {
@@ -70,6 +77,21 @@ const MainPage = () => {
         },
       });
       setRelatedArtistsData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getArtistIDFromName = async (artistName) => {
+    try {
+      const url = `${baseURL}search?q=${artistName}&type=artist`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      const linkedEndpointID = response.data.artists.items[0].id;
+      navigate(`/${linkedEndpointID}`);
     } catch (error) {
       console.log(error);
     }
