@@ -3,7 +3,7 @@ import "./AlbumsInfo.scss";
 const AlbumsInfo = ({ albumData, topTracksData }) => {
   if (!albumData) return null;
   return (
-    <div>
+    <div className="albums__container">
       <h2 className="albums__header"> Albums</h2>
       <section className="albums">
         <ul className="albums__list">
@@ -19,11 +19,11 @@ const AlbumsInfo = ({ albumData, topTracksData }) => {
           ))}
         </ul>
         <div className="album__song-container">
-          <ul className="albums__song-list">
+          <ol className="albums__song-list">
             {topTracksData.tracks.map((item) => (
               <li key={item.id}> {item.name}</li>
             ))}
-          </ul>
+          </ol>
         </div>
       </section>
     </div>
