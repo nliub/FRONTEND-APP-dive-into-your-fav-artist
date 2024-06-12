@@ -35,12 +35,6 @@ const MainPage = () => {
     }
   };
 
-  const handleSearchInput = (event) => {
-    // setSearchTerm(event.target.value);
-    const searchInput = event.target.value;
-    getArtistIDFromName(searchInput);
-  };
-
   const getAlbumData = async () => {
     try {
       const url = `${baseURL}artists/${artistID}/albums`;
@@ -95,10 +89,19 @@ const MainPage = () => {
         },
       });
       const linkedEndpointID = response.data.artists.items[0].id;
+      console.log(linkedEndpointID);
       navigate(`/${linkedEndpointID}`);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSearchInput = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const searchInput = form.search.value;
+    getArtistIDFromName(searchInput);
+    form.reset();
   };
 
   useEffect(() => {
@@ -113,13 +116,7 @@ const MainPage = () => {
   }
   return (
     <div>
-      {/* <DumbComponent
-        artistData={artistData}
-        albumData={albumData}
-        topTracksData={topTracksData}
-        relatedArtistsData={relatedArtistsData}
-      /> */}
-      <Header />
+      <Header handleSearchInput={handleSearchInput} />
       <ArtistInfo artistData={artistData} />
       <AlbumsInfo albumData={albumData} topTracksData={topTracksData} />
     </div>
