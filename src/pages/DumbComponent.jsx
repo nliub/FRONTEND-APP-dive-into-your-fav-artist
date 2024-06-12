@@ -1,4 +1,9 @@
-const DumbComponent = ({ artistData, albumData, topTracksData }) => {
+const DumbComponent = ({
+  artistData,
+  albumData,
+  topTracksData,
+  relatedArtistsData,
+}) => {
   return (
     <div>
       <h2>{artistData.name}</h2>
@@ -12,8 +17,13 @@ const DumbComponent = ({ artistData, albumData, topTracksData }) => {
       </h2>
       <hr />
       <h2>
-        {" "}
         {topTracksData.tracks.map((item) => (
+          <div key={item.id}> {item.name}</div>
+        ))}
+      </h2>
+      <hr />
+      <h2>
+        {relatedArtistsData.artists.map((item) => (
           <div key={item.id}> {item.name}</div>
         ))}
       </h2>

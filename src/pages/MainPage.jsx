@@ -92,6 +92,7 @@ const MainPage = () => {
         artistData={artistData}
         albumData={albumData}
         topTracksData={topTracksData}
+        relatedArtistsData={relatedArtistsData}
       />
     </div>
   );
