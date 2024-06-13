@@ -1,8 +1,11 @@
-# React + Vite
+# Demo instruction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Every new access token for Spotify API is only valid for an hr. Given this, we've added logic to demo the site using the default data (stored in local folder) WITHOUT any api calls (similar to cache). When the acess token works properly, the site will still work to show all the artists.
 
-Currently, two official plugins are available:
+To demo the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. go to "/" endpoint and see default Drake profile
+2. click on "future" in related artists to see future (notice URL change; refresh the page will still work)
+3. type "coldplay" in searchbar to navigate to coldplay
+4. click on "adele" in related artists
+5. at any time, search "adele", "drake", "future" or "coldplay" in searchbar will work
